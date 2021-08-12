@@ -1,0 +1,6 @@
+postgres:
+  database: docker
+  user: docker
+  password: mysecretpassword
+  host: localhost
+  port: 5432

@@ -13,7 +13,6 @@ async def get_limit(request: web.Request):
         lid = request.match_info['id']
         try:
             lim = await db.get_limit(conn, lid)
-            print(lim)
         except db.RecordNotFound as e:
             raise web.HTTPNotFound(text=str(e))
         return web.json_response(dict(lim))
@@ -24,7 +23,6 @@ async def add_limit(request: web.Request):
         lim = await request.json()
         try:
             lim = await db.add_limit(conn, lim)
-            print(lim)
         except db.InsertError as e:
             raise web.HTTPNotFound(text=str(e))
         return web.json_response(dict(lim))

@@ -1,0 +1,86 @@
+openapi: '3.0.2'
+info:
+  title: Test app
+  version: '1.0'
+servers:
+  - url: https://localhost:8080/
+paths:
+  /limits:
+    get:
+      description: Return all limits
+      responses:
+        '200':
+          description: successful return
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id: 
+                      type: integer
+                    country:
+                      type: string
+                    currency:
+                      type: string
+                    maxtransf:
+                      type: integer
+                    
+  /limit/{id}:
+    get:
+      description: Return limit by id
+      responses:
+        '200':
+          description: succes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: 
+                    type: integer
+                  country:
+                    type: string
+                  currency:
+                    type: string
+                  maxtransf:
+                    type: integer
+        '404':
+            description: Not found
+
+  /limit:
+    post:
+      description: Add limit
+      responses:
+        '200':
+          description: succes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: 
+                    type: integer
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - "country"
+                - "currency"
+                - "maxtransf"
+              properties:
+                country:
+                  type: string
+                currency:
+                  type: string
+                maxtransf: 
+                  type: integer
+
+
+
+  
